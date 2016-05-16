@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SumptusMagnus</string>
+    <string name="scan">Scan scan scan</string>
+    <string name="confirm_scan">Scan</string>
+    <string name="fragment_scanning_title">Scan Receipt</string>
+    <string name="fragment_history_title">History</string>
+    <string name="fragment_report_title">Report</string>
+</resources>
