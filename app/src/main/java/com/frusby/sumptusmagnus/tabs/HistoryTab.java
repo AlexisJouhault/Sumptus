@@ -66,6 +66,7 @@ public class HistoryTab extends LandingPageTabFragment {
     @Override
     public void updateUI() {
         super.updateUI();
+        //TODO update view instead of setting it up again (too long)
         setUpUI();
     }
 }
