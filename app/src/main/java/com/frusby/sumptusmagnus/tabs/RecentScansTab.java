@@ -10,6 +10,9 @@ import android.view.ViewGroup;
 
 import com.frusby.sumptusmagnus.R;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -17,6 +20,8 @@ import butterknife.OnClick;
  * Created by alexisjouhault on 4/24/16.
  */
 public class RecentScansTab extends LandingPageTabFragment {
+
+    private Logger LOGGER = LoggerFactory.getLogger(RecentScansTab.class);
 
     public RecentScansTab() {
         this.title = "Recent";
@@ -43,7 +48,7 @@ public class RecentScansTab extends LandingPageTabFragment {
 
     @OnClick(R.id.start_scanning_button)
     void onStartScanningClick() {
-        Log.d(TAG, "Start scanning");
+        LOGGER.debug("Start scanning");
         parentActivity.startScanning();
     }
 }

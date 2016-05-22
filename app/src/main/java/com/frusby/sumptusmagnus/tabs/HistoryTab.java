@@ -6,9 +6,20 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
+import com.frusby.sumptusmagnus.BaseComponents.SumptusAdapter;
+import com.frusby.sumptusmagnus.BaseComponents.ViewInfo;
 import com.frusby.sumptusmagnus.R;
+import com.frusby.sumptusmagnus.core.Receipt;
+import com.frusby.sumptusmagnus.core.ReceiptContainer;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.List;
+
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
@@ -16,9 +27,14 @@ import butterknife.ButterKnife;
  */
 public class HistoryTab extends LandingPageTabFragment {
 
+    private Logger LOGGER = LoggerFactory.getLogger(HistoryTab.class);
+
     public HistoryTab() {
         this.title = "History";
     }
+
+    @Bind(R.id.receipt_list)
+    ListView receiptListView;
 
     @Override
     public void onAttach(Context context) {
@@ -36,6 +52,13 @@ public class HistoryTab extends LandingPageTabFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         mainView = inflater.inflate(R.layout.fragment_history, container, false);
         ButterKnife.bind(this, mainView);
+        setUpUI();
         return mainView;
+    }
+
+    private void setUpUI() {
+        List<Receipt> receipts = Receipt.listAll(Receipt.class);
+        SumptusAdapter sumptusAdapter = new SumptusAdapter(ReceiptContainer.generateList(getActivity(), receipts, R.layout.receipt_layout));
+        receiptListView.setAdapter(sumptusAdapter);
     }
 }

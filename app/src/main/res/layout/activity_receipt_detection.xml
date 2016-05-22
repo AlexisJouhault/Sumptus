@@ -5,11 +5,11 @@
     android:layout_height="match_parent"
     tools:context="com.frusby.sumptusmagnus.ReceiptDetectionActivity">
 
-    <com.frusby.sumptusmagnus.scan.CameraPreview
-        android:id="@+id/camera_preview"
-        android:layout_above="@+id/confirm_scan"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <!--<com.frusby.sumptusmagnus.scan.CameraPreview-->
+        <!--android:id="@+id/camera_preview"-->
+        <!--android:layout_above="@+id/confirm_scan"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent" />-->
 
     <Button
         android:text="@string/confirm_scan"

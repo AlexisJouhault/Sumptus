@@ -9,10 +9,13 @@ public class Receipt extends SugarRecord {
 
     private String value;
     private String issuer;
+    private Long createDate;
+    private Long updateDate;
 
     public Receipt(String issuer, String value) {
         this.issuer = issuer;
         this.value = value;
+        this.createDate = System.currentTimeMillis();
     }
 
     public String getIssuer() {
@@ -29,5 +32,21 @@ public class Receipt extends SugarRecord {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public Long getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Long createDate) {
+        this.createDate = createDate;
+    }
+
+    public Long getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Long updateDate) {
+        this.updateDate = updateDate;
     }
 }

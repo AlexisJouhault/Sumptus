@@ -4,6 +4,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.frusby.sumptusmagnus.core.DatabaseManager;
+import com.frusby.sumptusmagnus.core.Receipt;
 import com.frusby.sumptusmagnus.scan.CameraPreview;
 import com.frusby.sumptusmagnus.scan.ImageAnalysisManager;
 
@@ -15,6 +17,7 @@ import org.opencv.core.Mat;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ReceiptDetectionActivity extends FragmentActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
 
@@ -30,7 +33,7 @@ public class ReceiptDetectionActivity extends FragmentActivity implements Camera
         setContentView(R.layout.activity_receipt_detection);
         ButterKnife.bind(this);
 
-        cameraPreview.setCvCameraViewListener(this);
+//        cameraPreview.setCvCameraViewListener(this);
     }
 
     @Override
@@ -71,4 +74,16 @@ public class ReceiptDetectionActivity extends FragmentActivity implements Camera
             }
         }
     };
+
+    @OnClick(R.id.confirm_scan)
+    public void onConfirm() {
+        Receipt receipt = processReceipt();
+        DatabaseManager.getInstance().addElem(receipt);
+    }
+
+    private Receipt processReceipt() {
+        Receipt receipt = new Receipt("Chipotle", "7.62");
+
+        return receipt;
+    }
 }
