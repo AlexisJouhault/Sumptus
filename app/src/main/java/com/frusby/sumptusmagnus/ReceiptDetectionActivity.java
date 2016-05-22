@@ -24,8 +24,8 @@ public class ReceiptDetectionActivity extends FragmentActivity implements Camera
     private final String TAG = FragmentActivity.class.toString();
     private ImageAnalysisManager imageAnalysisManager = new ImageAnalysisManager();
 
-    @Bind(R.id.camera_preview)
-    CameraPreview cameraPreview;
+//    @Bind(R.id.camera_preview)
+//    CameraPreview cameraPreview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +63,9 @@ public class ReceiptDetectionActivity extends FragmentActivity implements Camera
             switch (status) {
                 case LoaderCallbackInterface.SUCCESS:
                 {
-                    cameraPreview.setMaxFrameSize(1920, 1080);
+//                    cameraPreview.setMaxFrameSize(1920, 1080);
                     //cameraView.setResolution(new Size(1280, 720));
-                    cameraPreview.enableView();
+//                    cameraPreview.enableView();
                 } break;
                 default:
                 {

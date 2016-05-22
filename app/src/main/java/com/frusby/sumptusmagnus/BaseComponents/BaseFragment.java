@@ -27,4 +27,8 @@ public class BaseFragment extends Fragment {
         this.TAG = TAG;
     }
 
+
+    public void updateUI() {
+
+    }
 }

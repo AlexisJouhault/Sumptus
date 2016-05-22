@@ -27,4 +27,5 @@ public class LandingPageTabFragment extends BaseFragment {
     public String getTitle() {
         return title;
     }
+
 }

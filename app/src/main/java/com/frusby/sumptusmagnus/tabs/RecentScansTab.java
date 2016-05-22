@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.frusby.sumptusmagnus.R;
+import com.frusby.sumptusmagnus.core.DatabaseManager;
+import com.frusby.sumptusmagnus.core.Receipt;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,6 +51,14 @@ public class RecentScansTab extends LandingPageTabFragment {
     @OnClick(R.id.start_scanning_button)
     void onStartScanningClick() {
         LOGGER.debug("Start scanning");
-        parentActivity.startScanning();
+//        parentActivity.startScanning();
+        Receipt receipt = processReceipt();
+        DatabaseManager.getInstance().addElem(receipt);
+    }
+
+    private Receipt processReceipt() {
+        Receipt receipt = new Receipt("Chipotle", "7.62");
+
+        return receipt;
     }
 }

@@ -57,8 +57,15 @@ public class HistoryTab extends LandingPageTabFragment {
     }
 
     private void setUpUI() {
+        LOGGER.debug("Setting up {} UI", TAG);
         List<Receipt> receipts = Receipt.listAll(Receipt.class);
         SumptusAdapter sumptusAdapter = new SumptusAdapter(ReceiptContainer.generateList(getActivity(), receipts, R.layout.receipt_layout));
         receiptListView.setAdapter(sumptusAdapter);
+    }
+
+    @Override
+    public void updateUI() {
+        super.updateUI();
+        setUpUI();
     }
 }

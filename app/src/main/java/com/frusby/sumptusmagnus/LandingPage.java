@@ -9,6 +9,7 @@ import android.util.Log;
 
 import com.frusby.sumptusmagnus.BaseComponents.SumptusPagerAdapter;
 import com.frusby.sumptusmagnus.tabs.HistoryTab;
+import com.frusby.sumptusmagnus.tabs.LandingPageTabFragment;
 import com.frusby.sumptusmagnus.tabs.ReportTab;
 import com.frusby.sumptusmagnus.tabs.RecentScansTab;
 import com.frusby.sumptusmagnus.tools.ActivityResultCodes;
@@ -43,15 +44,35 @@ public class LandingPage extends FragmentActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        SumptusPagerAdapter adapter = new SumptusPagerAdapter(getSupportFragmentManager());
+        final SumptusPagerAdapter adapter = new SumptusPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new RecentScansTab());
         adapter.addFragment(new HistoryTab());
         adapter.addFragment(new ReportTab());
         viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                LandingPageTabFragment fragment = (LandingPageTabFragment) adapter.getItem(position);
+                if (fragment != null) {
+                    fragment.updateUI();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
     public void startScanning() {
         Intent i = new Intent(this, ReceiptDetectionActivity.class);
         startActivityForResult(i, ActivityResultCodes.GET_IMAGES_FROM_SCAN);
     }
+
 }

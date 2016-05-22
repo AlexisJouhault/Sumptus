@@ -12,6 +12,9 @@ public class Receipt extends SugarRecord {
     private Long createDate;
     private Long updateDate;
 
+    public Receipt() {
+    }
+
     public Receipt(String issuer, String value) {
         this.issuer = issuer;
         this.value = value;
